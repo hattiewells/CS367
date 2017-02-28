@@ -42,6 +42,9 @@ public class JobList implements ListADT<Job> {
 	@Override
 	public boolean contains(Job item) {
 		// TODO Auto-generated method stub
+		
+		
+		working on conains
 		return false;
 	}
 
