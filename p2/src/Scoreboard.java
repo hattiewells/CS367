@@ -12,6 +12,7 @@ public class Scoreboard implements ScoreboardADT {
 		jItr = list.iterator();
 		while(jItr.hasNext()){
 			retScore += jItr.next().getPoints();
+			System.out.println("how many items");
 		}
 		
 		return retScore;

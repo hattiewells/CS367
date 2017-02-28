@@ -50,9 +50,9 @@ public class GameApp{
     		System.out.println("You have " + game.getTimeToPlay() + " left in the game!");
     		game.displayActiveJobs();
     		System.out.println("");
-    		System.out.print("Select a job to work on: ");
-    		index = STDIN.nextInt(); 
-    		duration = getIntegerInput("For how long would you like to work on this job?: "); 
+    		//gets input from user then updtats job
+    		index = getIntegerInput("Select a job to work on: ");
+     		duration = getIntegerInput("For how long would you like to work on this job?: "); 
     		game.updateJob(index, duration);
     		game.displayCompletedJobs();
     	}

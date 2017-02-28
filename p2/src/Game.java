@@ -125,24 +125,29 @@ public class Game{
      */
     public Job updateJob(int index, int duration){
         //TODO: As per instructions in comments
-    	if(index != 0){
-    		timeToPlay -= index; 
-    	}
+ 
+    	timeToPlay -= index; 
     	timeToPlay -= duration; 
-    	//Job toDo = list.get(index); 
+    	
+    	// Remove job may add back if not complete
     	Job toDo = list.remove(index); 
+    	
     	System.out.println(toDo.getTimeUnits());
     	if(duration > toDo.getTimeUnits()){
     		duration = toDo.getTimeUnits(); 
     	}
-    	toDo.setTimeUnits(toDo.getTimeUnits() - duration);
-    	if(toDo.getSteps() == 0){
+    	toDo.setSteps(toDo.getSteps()+duration);
+    	
+    	
+    	System.out.println(toDo.getSteps());
+    	if(toDo.getSteps() >= toDo.getTimeUnits()){
     		scoreBoard.updateScoreBoard(toDo);
     		System.out.println("Job completed! Current Score: " + getTotalScore());
     	}
     	else{
+    	
     		int pos = 0; 
-    		pos = GameApp.getIntegerInput("At what position would you like to insert the job back into the list?"); 
+    		pos = GameApp.getIntegerInput("At what position would you like to insert the job back into the list? "); 
     		this.addJob(pos, toDo);
     	}
         return null;
