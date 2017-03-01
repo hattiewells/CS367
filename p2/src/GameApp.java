@@ -43,14 +43,28 @@ public class GameApp{
      */
     private void start(){
         //TODO: The interactive game logic goes here
+    	//
     	while(!game.isOver()){
-    		int index = 0; 
-    		int duration = 0; 
+    		
+    		int index = 0;
+    		int duration = 0;
+    		
+    		/*	create new jobs using the game object, which starts the simulator
+    		 *	with job list and time to play
+    		 */
     		game.createJobs();
+    		
+    		/*	Tell user how much time they have left and display time left and active jobs
+    		 *	listed and a new line
+    		 */
     		System.out.println("You have " + game.getTimeToPlay() + " left in the game!");
     		game.displayActiveJobs();
     		System.out.println("");
-    		//gets input from user then updtats job
+    		
+    		/* get job to work on from user, and how long to work on it
+    		 * update job
+    		 * 
+    		 */
     		index = getIntegerInput("Select a job to work on: ");
      		duration = getIntegerInput("For how long would you like to work on this job?: "); 
     		game.updateJob(index, duration);

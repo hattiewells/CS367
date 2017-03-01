@@ -43,7 +43,6 @@ public class JobSimulator{
             generator = new Random(seed);
         else
             generator = new Random(System.currentTimeMillis());
-
     }
 
     /**
@@ -58,7 +57,6 @@ public class JobSimulator{
      *                 Later this can be used to send the timeUnits of the
      *                 current job in execution
      */
-
     public void simulateJobs(ListADT<Job> list, int timeUnits){
 
       int jobType = generator.nextInt(Config.HIGH- Config.LOW);

@@ -42,6 +42,8 @@ public class JobListIterator implements java.util.Iterator<Job>{
 		// Special case where this is the first job in the list
 		if(timesCalled == 0){
 			timesCalled++; 
+			
+			//this is not working 
 			name = jobList.getNext().getData().getJobName();
 			points = jobList.getNext().getData().getPoints();
 			timeUnits = jobList.getNext().getData().getTimeUnits();

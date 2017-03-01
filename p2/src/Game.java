@@ -4,6 +4,7 @@ public class Game{
      * A list of all jobs currently in the queue.
      */
     private ListADT<Job> list;
+    
     /**
      * Whenever a Job is completed it is added to the scoreboard
      */
@@ -19,6 +20,7 @@ public class Game{
      * duration used to determine the length of the game.
      */
     public Game(int seed, int timeToPlay){
+    	
         /**
          * TODO: Initializes all member variables
          */
@@ -126,29 +128,54 @@ public class Game{
     public Job updateJob(int index, int duration){
         //TODO: As per instructions in comments
  
+    	//time to play is decreased based on user input
     	timeToPlay -= index; 
     	timeToPlay -= duration; 
     	
-    	// Remove job may add back if not complete
+    	// Remove job, will add back if not complete
     	Job toDo = list.remove(index); 
     	
-    	System.out.println(toDo.getTimeUnits());
+    	// don't let user use more time units than are remaining
     	if(duration > toDo.getTimeUnits()){
     		duration = toDo.getTimeUnits(); 
     	}
+    	
+    	//increase step count by time units taken from that job
     	toDo.setSteps(toDo.getSteps()+duration);
-    	
-    	
-    	System.out.println(toDo.getSteps());
+ 
+    	//Job is completed if the steps required is equal to the time units
     	if(toDo.getSteps() >= toDo.getTimeUnits()){
     		scoreBoard.updateScoreBoard(toDo);
     		System.out.println("Job completed! Current Score: " + getTotalScore());
     	}
+    	//if job is not completed let user add back to the list
     	else{
-    	
+ 
     		int pos = 0; 
+    		
     		pos = GameApp.getIntegerInput("At what position would you like to insert the job back into the list? "); 
-    		this.addJob(pos, toDo);
+    		
+    		//if position in the list is not valid or user enters -1, put at the end of the list
+    		if(pos > list.size() || pos < 0){
+    			    			
+    			//update steps left
+    			toDo.setTimeUnits(toDo.getTimeUnits() - toDo.getSteps());
+    			System.out.print("hello\n");
+    			//add job back to end of the list
+    			this.addJob(list.size(), toDo);
+    			System.out.print("hello111\n");
+    			//time penalty for putting at end of the list of size list.size() 
+    			timeToPlay -= list.size();
+    			
+    		}else{
+
+    			//add job to list at position requested since valid position was entered
+    			this.addJob(pos, toDo);
+    		
+    			//time taken must be accounted for position placed at in list
+    			timeToPlay -= pos;
+    			return toDo;
+    		}
     	}
         return null;
     }
@@ -179,6 +206,8 @@ public class Game{
      */
     public void displayCompletedJobs(){
         //TODO: Display all the completed jobs
+    	
+    	//store completed jobs in a jobList in scoreboard.java
     	scoreBoard.displayScoreBoard();
     }
 

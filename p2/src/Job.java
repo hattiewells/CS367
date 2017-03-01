@@ -19,7 +19,8 @@
  *
  */
 public class Job{
-    /** Member variables of the job class
+    /*
+     * Member variables of the job class
      */
     private String jobName;
     private int steps;
