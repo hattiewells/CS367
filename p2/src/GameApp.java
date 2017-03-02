@@ -68,6 +68,8 @@ public class GameApp{
     		index = getIntegerInput("Select a job to work on: ");
      		duration = getIntegerInput("For how long would you like to work on this job?: "); 
     		game.updateJob(index, duration);
+    		
+    		//doesn't work if no jobs have been completed
     		game.displayCompletedJobs();
     	}
     }

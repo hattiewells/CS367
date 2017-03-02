@@ -34,25 +34,30 @@ public class JobListIterator implements java.util.Iterator<Job>{
 	}
 	
 	public Job next(){
+		
 		Job retJob = null; 
+		
 		// Name of the job
 		String name;
+		
 		// Number of points, and time units 
 		int points, timeUnits; 
+		
 		// Special case where this is the first job in the list
 		if(timesCalled == 0){
+			
 			timesCalled++; 
 			
 			//this is not working 
 			name = jobList.getNext().getData().getJobName();
 			points = jobList.getNext().getData().getPoints();
 			timeUnits = jobList.getNext().getData().getTimeUnits();
-			retJob = new Job(name, points, timeUnits); 
+			retJob = new Job(name, points, timeUnits);
 			jobList = jobList.getNext();
 			//return retJob;
-		}
-		// Returns the next job in the list  
-		if(hasNext()){ 
+		
+		}// Returns the next job in the list  
+		if(hasNext()) { 
 			name = jobList.getData().getJobName(); 
 			points = jobList.getData().getPoints(); 
 			timeUnits = jobList.getData().getTimeUnits(); 

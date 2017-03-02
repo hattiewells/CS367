@@ -60,6 +60,7 @@ public class Game{
         //TODO: check if the game is over or not
         return (timeToPlay <= 0);
     }
+    
     /**
      * This method simply invokes the simulateJobs method
      * in the JobSimulator object.
@@ -160,15 +161,19 @@ public class Game{
     			    			
     			//update steps left
     			toDo.setTimeUnits(toDo.getTimeUnits() - toDo.getSteps());
-    			System.out.print("hello\n");
+    			
     			//add job back to end of the list
-    			this.addJob(list.size(), toDo);
-    			System.out.print("hello111\n");
+    			this.addJob(toDo);
+    			
     			//time penalty for putting at end of the list of size list.size() 
     			timeToPlay -= list.size();
+    			return toDo;
     			
     		}else{
 
+    			//update steps left
+    			toDo.setTimeUnits(toDo.getTimeUnits() - toDo.getSteps());
+    			
     			//add job to list at position requested since valid position was entered
     			this.addJob(pos, toDo);
     		
