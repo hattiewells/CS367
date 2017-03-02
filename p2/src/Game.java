@@ -136,11 +136,14 @@ public class Game{
     	// Remove job, will add back if not complete
     	Job toDo = list.remove(index); 
     	
+ 
+    	
     	// don't let user use more time units than are remaining
     	if(duration > toDo.getTimeUnits()){
     		duration = toDo.getTimeUnits(); 
     	}
     	
+      
     	//increase step count by time units taken from that job
     	toDo.setSteps(toDo.getSteps()+duration);
  
@@ -149,11 +152,11 @@ public class Game{
     		scoreBoard.updateScoreBoard(toDo);
     		System.out.println("Job completed! Current Score: " + getTotalScore());
     	}
+    	
     	//if job is not completed let user add back to the list
     	else{
  
     		int pos = 0; 
-    		
     		pos = GameApp.getIntegerInput("At what position would you like to insert the job back into the list? "); 
     		
     		//if position in the list is not valid or user enters -1, put at the end of the list

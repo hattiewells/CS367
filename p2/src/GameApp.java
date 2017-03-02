@@ -69,9 +69,9 @@ public class GameApp{
      		duration = getIntegerInput("For how long would you like to work on this job?: "); 
     		game.updateJob(index, duration);
     		
-    		//doesn't work if no jobs have been completed
     		game.displayCompletedJobs();
     	}
+    	System.out.println("Game Over! \n Your final score: " + game.getTotalScore());
     }
 
     /**
